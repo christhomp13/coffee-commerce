@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StarIcon } from '@heroicons/react/outline'
 import { addItemToBasket, removeItemFromBasket } from '../features/basketSlice'
 import { useDispatch } from 'react-redux'
 
+const MAX_RATING = 5;
+const MIN_RATING = 3;
 
-function CheckoutCoffee({id, title, price, rating}) {
+function CheckoutCoffee({id, title, price}) {
+
+    const [rating] = useState(
+        Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+    );
 
     const dispatch = useDispatch();
 
@@ -21,7 +27,7 @@ function CheckoutCoffee({id, title, price, rating}) {
 
     return (
         <div className='grid grid-cols-5 p-2'>
-                <img src='https://media.istockphoto.com/photos/bag-with-coffee-beans-isolated-on-white-picture-id166000454?b=1&k=20&m=166000454&s=170667a&w=0&h=0Id4xm6EVJwZm55Y4nba-qXUXWsfBae0q6i6A0Falhg=' height={200} width={200} objectFit='contain'/>
+                <img src='https://media.istockphoto.com/photos/bag-with-coffee-beans-isolated-on-white-picture-id166000454?b=1&k=20&m=166000454&s=170667a&w=0&h=0Id4xm6EVJwZm55Y4nba-qXUXWsfBae0q6i6A0Falhg=' alt='coffee' height={200} width={200} objectFit='contain'/>
 
                 <div className='col-span-3 mx-5'>
                     <h4 className='my-3'>{title}</h4>

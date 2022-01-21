@@ -1,13 +1,33 @@
+// import { loadStripe } from '@stripe/stripe-js'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectBasketTotalAmount, selectItems } from '../features/basketSlice'
 import CheckoutCoffee from './CheckoutCoffee'
+// import axios from 'axios'
+// const stripePromise = loadStripe('pk_test_51KHxNvHNGOzHFQSPFuTNxQmhkutCEzRxHWMvn5djRrmWmTvcT3LVmKcavcg8AVCNk7yV5EbauZ9TeTeLOtlc3SiH00FLrajj7R')
+
 
 
 function BasketView() {
 
 const items = useSelector(selectItems)
 const basketTotal = useSelector(selectBasketTotalAmount);
+// const [session] = useSession();
+
+
+// const createCheckoutSession = async () =>{
+//     const stripe = await stripePromise;
+
+//     const checkoutSession = await axios.post('/api/create-checkout-session',{
+//         items: items,
+//         // email: session.user.email
+//     })
+
+//     const result = await stripe.redirectToCheckout({
+//         sessionId: checkoutSession.data.id,
+//     });
+//     if (result.error) alert(result.error.message);
+// }
 
     return (
         <div className='bg-gray-100'>
@@ -47,7 +67,7 @@ const basketTotal = useSelector(selectBasketTotalAmount);
                         </> 
                         )}
 
-                        <button  className='p-2 text-xs md:text-sm bg-gradient-to-b from-gray-200 to-gray-400 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 active:from-gray-500 text-white'>
+                        <button role='link' className='p-2 text-xs md:text-sm bg-gradient-to-b from-gray-200 to-gray-400 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 active:from-gray-500 text-white'>
                             Proceed to Checkout
                         </button>
                         
