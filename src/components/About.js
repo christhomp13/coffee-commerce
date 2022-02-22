@@ -3,7 +3,7 @@ import React from 'react'
 function About() {
     return (
         <div className='flex p-5'>
-            <img className=''src="https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2136&q=80" alt="coffee cup" objectFit='contain' layout='fill' height={300} width={400}/>
+            <img className='hidden md:block'src="https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2136&q=80" alt="coffee cup" objectFit='contain' layout='fill' height={300} width={400}/>
             <div className='flex flex-grow bg-white'>
                 <div className='flex flex-col items-center justify-center'>
                     <h1 className='text-5xl'>Our Story</h1>

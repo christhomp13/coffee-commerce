@@ -1,10 +1,10 @@
-// import { loadStripe } from '@stripe/stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectBasketTotalAmount, selectItems } from '../features/basketSlice'
 import CheckoutCoffee from './CheckoutCoffee'
 // import axios from 'axios'
-// const stripePromise = loadStripe('pk_test_51KHxNvHNGOzHFQSPFuTNxQmhkutCEzRxHWMvn5djRrmWmTvcT3LVmKcavcg8AVCNk7yV5EbauZ9TeTeLOtlc3SiH00FLrajj7R')
+// const stripePromise = loadStripe(process.env.stripe_public_key);
 
 
 
@@ -12,8 +12,6 @@ function BasketView() {
 
 const items = useSelector(selectItems)
 const basketTotal = useSelector(selectBasketTotalAmount);
-// const [session] = useSession();
-
 
 // const createCheckoutSession = async () =>{
 //     const stripe = await stripePromise;
@@ -49,7 +47,7 @@ const basketTotal = useSelector(selectBasketTotalAmount);
                         <p>Total:${basketTotal}</p>
                         
                         {items.map((item, i) => (
-                        <CheckoutCoffee key={i} id={item.id} title={item.title} price={item.price}/>
+                        <CheckoutCoffee key={i} id={item.id} title={item.title} price={item.price} image={item.image}/>
                         ))}
                     </div>
                 </div>

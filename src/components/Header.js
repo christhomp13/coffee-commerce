@@ -3,27 +3,26 @@ import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { useSelector } from 'react-redux'
 import { selectItemsCount } from '../features/basketSlice'
 import { useHistory } from 'react-router-dom'
-import { auth } from  '../firebase'
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import SignUp from './SignUp'
+import { useUserAuth } from "../contexts/AuthContext";
 
 function Header() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const { logOut, user } = useUserAuth();
+    const history = useHistory();
+    const handleLogout = async () => {
+      try {
+        await logOut();
+        history.push("/");
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+
 
     const numberOfItemsInBasket = useSelector(selectItemsCount)
-    const history= useHistory();
-
     
-    const signInWithGoogle = () => {
-        const provider = new GoogleAuthProvider()
-        signInWithPopup(auth, provider)
-        .then((res)=>{
-            console.log(res)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-        setIsLoggedIn(true)
-    }
+
 
     return (
         <header className='sticky top-0 z-50'>
@@ -38,7 +37,10 @@ function Header() {
                 </div>
 
                 <div className='relative flex items-center space-x-5'>
-                    <h1 onClick={signInWithGoogle} className='hover:underline cursor-pointer'>{isLoggedIn ? 'Sign Out' : 'Login'}</h1>
+                        <h1 className='flex text-white'>{user && <button className='flex hover:underline' onClick={handleLogout}>
+                             Log out</button>}</h1> 
+                        
+                    <h1 hidden={user} onClick={() => history.push('/login')} className='hover:underline cursor-pointer'>Login</h1>
                     <ShoppingCartIcon onClick={()=> history.push('/checkout')}className='h-14 p-4 cursor-pointer' />
                     <span className='absolute top-0 right-0  h-6 w-6 bg-red-600 text-center rounded-full text-white font-semibold'>{numberOfItemsInBasket}</span>
                 </div>
@@ -47,4 +49,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header;

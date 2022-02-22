@@ -29,7 +29,7 @@ function CoffeeProduct({id, title, price}) {
 
             <div className='flex flex-col items-center m-5 bg-white z-30 p-10'>
 
-                 <img className='justify-center' src='https://media.istockphoto.com/photos/bag-with-coffee-beans-isolated-on-white-picture-id166000454?b=1&k=20&m=166000454&s=170667a&w=0&h=0Id4xm6EVJwZm55Y4nba-qXUXWsfBae0q6i6A0Falhg=' alt="coffee" height={200} width={200} objectFit='contain'/>
+                <img className='justify-center' src='https://media.istockphoto.com/photos/bag-with-coffee-beans-isolated-on-white-picture-id166000454?b=1&k=20&m=166000454&s=170667a&w=0&h=0Id4xm6EVJwZm55Y4nba-qXUXWsfBae0q6i6A0Falhg=' alt="coffee" height={200} width={200} objectFit='contain'/>
                 <h4 className='my-3'>{title}</h4>
 
                 <div className='flex'>

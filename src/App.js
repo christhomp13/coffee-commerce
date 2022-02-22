@@ -7,15 +7,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import BasketView from './components/BasketView';
 import ShopNow from './components/ShopNow';
 import About from './components/About';
-
+import Footer from './components/Footer';
+import SignUp from './components/SignUp';
+import { UserAuthContextProvider } from "./contexts/AuthContext";
+import Login from './components/Login';
 
 
 
 function App() {
 
-
   return (
     <div className="bg-gray-100">
+    <UserAuthContextProvider>
       <Router>
         <Header/>
         <Switch>
@@ -34,13 +37,12 @@ function App() {
 
             <div className=''>
               <About/>
-              </div>
-            
+            </div>
             
           </Route>
           
           <Route path="/checkout">
-            <BasketView />
+            <BasketView/>
           </Route>
 
           <Route path="/shopnow">
@@ -61,10 +63,20 @@ function App() {
             <About />
           </Route>
 
+
+          <Route path="/signup">
+            <SignUp/>
+          </Route>
+
+          <Route path="/login">
+            <Login/>
+          </Route>
+
          </Switch>
         
       </Router>
-  
+      </UserAuthContextProvider>
+      <Footer/>
       
     </div>
   );
