@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { useSelector } from 'react-redux'
 import { selectItemsCount } from '../features/basketSlice'
 import { useHistory } from 'react-router-dom'
-import SignUp from './SignUp'
 import { useUserAuth } from "../contexts/AuthContext";
 
 function Header() {

@@ -1,4 +1,4 @@
-import { loadStripe } from '@stripe/stripe-js'
+// import { loadStripe } from '@stripe/stripe-js'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectBasketTotalAmount, selectItems } from '../features/basketSlice'
